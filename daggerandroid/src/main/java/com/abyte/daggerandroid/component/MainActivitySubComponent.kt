@@ -10,7 +10,10 @@ import dagger.android.AndroidInjector
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 
-@Subcomponent(modules = [MainActivityModule::class])
+@Subcomponent(
+    modules = [MainActivityModule::class,
+        BindMainFragmentModule::class]
+)
 interface MainActivitySubComponent : AndroidInjector<MainActivity> {
 
     @Subcomponent.Builder
