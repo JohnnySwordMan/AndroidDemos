@@ -17,6 +17,52 @@
 
 基本同`Activity`，详见代码，需要注意是在`onAttach()`中注入
 
+
+### Activity简化  
+
+使用`@ContributesAndroidInjector`来代替之前步骤2和步骤3定义的一些`SubComponent`和`BindModule`
+
+以`MainActivity`为例：
+
+```java
+// 步骤2：定义SubComponent
+@Subcomponent(
+    modules = [MainActivityModule::class,
+        BindMainFragmentModule::class]
+)
+interface MainActivitySubComponent : AndroidInjector<MainActivity> {
+
+    @Subcomponent.Builder
+	 abstract class Builder : AndroidInjector.Builder<MainActivity>() {}
+}
+
+
+// 步骤3：将SubComponent添加到Component层级中
+@Module(subcomponents = [MainActivitySubComponent::class])
+abstract class BindMainActivityModule {
+
+    // *，不能写成<out Activity>
+    @Binds
+    @IntoMap
+    @ClassKey(MainActivity::class)
+    abstract fun bindMainActivityInjector(builder: MainActivitySubComponent.Builder): AndroidInjector.Factory<*>
+}
+```  
+
+现在通过`@ContributesAndroidInjector`改写上述代码，如下：  
+
+```java
+@Module
+abstract class BindMainActivityModule {
+
+    @ContributesAndroidInjector(modules = [MainActivityModule::class, BindMainFragmentModule::class])
+    abstract fun contributeMainActivity(): MainActivity
+}
+```  
+
+
+
+
 ### 参考文献  
 
 1. [Dagger & Android](https://dagger.dev/android)
