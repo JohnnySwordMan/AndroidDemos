@@ -11,9 +11,10 @@ import com.abyte.daggerandroid.model.Author
 import com.abyte.daggerandroid.model.IUser
 import com.abyte.daggerandroid.model.Login
 import dagger.android.AndroidInjection
+import dagger.android.DaggerFragment
 import javax.inject.Inject
 
-class MainFragment : Fragment() {
+class MainFragment : DaggerFragment() {
 
     @Inject
     lateinit var author: Author

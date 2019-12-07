@@ -9,16 +9,17 @@ import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasFragmentInjector
+import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity(), HasFragmentInjector {
+class MainActivity : DaggerAppCompatActivity() {
 
-    @Inject
-    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
-
-    override fun fragmentInjector(): AndroidInjector<Fragment> {
-        return fragmentInjector
-    }
+//    @Inject
+//    lateinit var fragmentInjector: DispatchingAndroidInjector<Fragment>
+//
+//    override fun fragmentInjector(): AndroidInjector<Fragment> {
+//        return fragmentInjector
+//    }
 
     @Inject
     lateinit var user: IUser

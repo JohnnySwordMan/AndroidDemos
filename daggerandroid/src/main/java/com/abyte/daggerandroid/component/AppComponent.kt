@@ -6,6 +6,7 @@ import com.abyte.daggerandroid.module.AppModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
 import javax.inject.Singleton
 
 @Singleton
@@ -14,8 +15,8 @@ import javax.inject.Singleton
         AppModule::class,
         BindMainActivityModule::class]
 )
-interface AppComponent {
-    fun inject(application: DaApplication)
+interface AppComponent : AndroidInjector<DaApplication> {
+//    fun inject(application: DaApplication)
 
     @Component.Builder
     interface Builder {
