@@ -25,7 +25,8 @@ class MainActivity : DaggerAppCompatActivity() {
     lateinit var user: IUser
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        AndroidInjection.inject(this)
+        // 继承DaggerAppCompatActivity，就不用手动AndroidInjection.inject(this)
+//        AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         logger.info("user = $user")

@@ -26,7 +26,7 @@ class MainFragment : DaggerFragment() {
     lateinit var login: Login
 
     override fun onAttach(activity: Activity?) {
-        AndroidInjection.inject(this)
+//        AndroidInjection.inject(this)
         super.onAttach(activity)
     }
 
