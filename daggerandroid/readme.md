@@ -58,7 +58,47 @@ abstract class BindMainActivityModule {
     @ContributesAndroidInjector(modules = [MainActivityModule::class, BindMainFragmentModule::class])
     abstract fun contributeMainActivity(): MainActivity
 }
+```    
+
+### 定义全局性的对象  
+
+1. 需要用到`@Component.Builder`和`@BindsInstance`两个注解，代码如下：  
+
+```java
+interface AppComponent {
+    fun inject(application: DaApplication)
+
+    @Component.Builder
+    interface Builder {
+
+        fun build(): AppComponent
+
+        @BindsInstance
+        fun application(application: Application): Builder
+    }
+}
 ```  
+
+2. 修改Application类  
+
+```java
+//        DaggerAppComponent.create().inject(this)
+        DaggerAppComponent.builder().application(this).build().inject(this)
+```   
+
+3. 定义AppModule 
+
+```java
+@Module
+class AppModule {
+
+    @Singleton
+    @Provides
+    fun provideLogin(): Login {
+        return Login("呵呵呵呵", "123456")
+    }
+}
+```
 
 
 

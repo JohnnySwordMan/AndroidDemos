@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.abyte.daggerandroid.model.Author
 import com.abyte.daggerandroid.model.IUser
+import com.abyte.daggerandroid.model.Login
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -19,6 +20,9 @@ class MainFragment : Fragment() {
 
     @Inject
     lateinit var user: IUser
+
+    @Inject
+    lateinit var login: Login
 
     override fun onAttach(activity: Activity?) {
         AndroidInjection.inject(this)
@@ -38,5 +42,6 @@ class MainFragment : Fragment() {
         logger.error("author = $author")
         Log.e("gy", "author = $author")
         Log.e("gy", "MainFragment-user = $user")
+        Log.e("gy", "MainFragment-login = $login")
     }
 }
