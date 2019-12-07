@@ -3,6 +3,7 @@ package com.abyte.daggerandroid
 import android.app.Fragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.abyte.daggerandroid.model.IUser
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), HasFragmentInjector {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         logger.info("user = $user")
+        Log.e("gy", "MainActivity---user = $user")
 
         val mainFragment = MainFragment()
         val transaction = fragmentManager.beginTransaction()

@@ -3,6 +3,20 @@
 1. Activity、Fragment简化  
 2. 详细记录每个步骤
 
+### Activity注入步骤  
+
+1. 在应用级别的组件`Component`中，设置`AndroidInjectionModule`，以确保所有`dagger.android`框架中的类都可用  
+2. 定义`SubComponent`，例如`MainActivitySubComponent`  
+3. 将上述`SubComponent`添加到`Component`层级中。具体操作：定义一个绑定`SubComponent.Builder`的module，例如`BindMainActivityModule`，将
+这个module添加到注入Application的Component中。
+4. `Application`实现`HasActivityInjector`，并`@Inject`一个`DispatchingAndroidInjector`，在`activityInjector()`中返回。
+5. 在`MainActivity`中`inject`，是在`onCreate`方法中注入，写在`super.onCreate`之前
+
+
+### Fragment注入步骤  
+
+基本同`Activity`，详见代码，需要注意是在`onAttach()`中注入
+
 ### 参考文献  
 
 1. [Dagger & Android](https://dagger.dev/android)

@@ -1,10 +1,6 @@
 package com.abyte.daggerandroid.model
 
 
-interface IUser {
+interface IUser
 
-}
-
-class User(val userName: String, val age: Int) : IUser {
-
-}
+data class User(val userName: String, val age: Int) : IUser

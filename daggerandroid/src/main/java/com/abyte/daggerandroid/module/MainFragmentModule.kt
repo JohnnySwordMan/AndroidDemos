@@ -9,7 +9,7 @@ class MainFragmentModule {
 
     @Provides
     fun provideUser(): Author {
-        return Author("哈哈", 30)
+        return Author("哈哈哈", 30)
     }
 
 }

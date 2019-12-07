@@ -10,7 +10,7 @@ class MainActivityModule {
 
     @Provides
     fun provideIUser(): IUser {
-        return User("geyan", 20)
+        return User("geyan", 26)
     }
 
 }

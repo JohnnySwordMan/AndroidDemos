@@ -1,6 +1,5 @@
 package com.abyte.daggerandroid.component
 
-import android.app.Activity
 import com.abyte.daggerandroid.MainActivity
 import com.abyte.daggerandroid.module.MainActivityModule
 import dagger.Binds
@@ -10,6 +9,7 @@ import dagger.android.AndroidInjector
 import dagger.multibindings.ClassKey
 import dagger.multibindings.IntoMap
 
+// 这样的话，在MainFragment中是可以拿到MainActivityModule中对外提供的对象的
 @Subcomponent(
     modules = [MainActivityModule::class,
         BindMainFragmentModule::class]
@@ -28,6 +28,6 @@ abstract class BindMainActivityModule {
     @Binds
     @IntoMap
     @ClassKey(MainActivity::class)
-    abstract fun bindMainActivityInjectorFactory(builder: MainActivitySubComponent.Builder): AndroidInjector.Factory<*>
+    abstract fun bindMainActivityInjector(builder: MainActivitySubComponent.Builder): AndroidInjector.Factory<*>
 
 }
