@@ -1,2 +1,3 @@
 include ':app', ':daggerandroid'
 rootProject.name='AndroidDemos'
+include ':common'
